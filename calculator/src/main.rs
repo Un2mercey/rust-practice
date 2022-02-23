@@ -6,15 +6,16 @@ fn main() {
     let mut args: Args = args();
 
     let first = args.nth(1).unwrap();
-    let operator = args.nth(0).unwrap();
+    let operator = args.nth(0).unwrap().chars().next().unwrap();
     let second = args.nth(0).unwrap();
 
     let first_number = first.parse::<f32>().unwrap();
     let second_number = second.parse::<f32>().unwrap();
+    let result = operate(operator, first_number, second_number);
 
     println!(
-        "println called\n\tresult: {} {} {}",
-        first, operator, second
+        "println called\n\t{} {} {} = {}",
+        first, operator, second, result
     );
 }
 
