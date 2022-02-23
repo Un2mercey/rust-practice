@@ -19,8 +19,8 @@ fn main() -> Result<(), ImageDataErrors> {
         return Err(ImageDataErrors::DifferentImageFormats);
     }
 
-    let (image_1, image_2) = standardise_size(image_1, image_2);
-    let output = FloatingImage::new(image_1.width(), image_1.height(), args.output);
+    let (image_1, _image_2) = standardise_size(image_1, image_2);
+    let _output = FloatingImage::new(image_1.width(), image_1.height(), args.output);
 
     Ok(())
 }
