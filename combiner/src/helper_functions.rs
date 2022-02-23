@@ -47,8 +47,6 @@ pub fn standardise_size(
 }
 
 pub fn combine_images(image_1: DynamicImage, image_2: DynamicImage) -> Vec<u8> {
-    println!("'println!' called at the func 'combine_images'");
-
     let vec_1 = image_1.to_rgba8().into_vec();
     let vec_2 = image_2.to_rgba8().into_vec();
 
@@ -56,17 +54,15 @@ pub fn combine_images(image_1: DynamicImage, image_2: DynamicImage) -> Vec<u8> {
 }
 
 fn alternate_pixels(vec_1: Vec<u8>, vec_2: Vec<u8>) -> Vec<u8> {
-    println!("'println!' called at the func 'alternate_pixels'");
-
     // if vec_1.len() == 5, vec! macro will create the same [0,0,0,0,0]
     let mut combine_data = vec![0u8; vec_1.len()];
 
     let mut i = 0;
     while i < vec_1.len() {
         if i % 8 == 0 {
-            combine_data.splice(i..=i + 3, set_rgba(&vec_1, i, i + 3))
+            combine_data.splice(i..=i + 3, set_rgba(&vec_1, i, i + 3));
         } else {
-            combine_data.splice(i..=i + 3, set_rgba(&vec_2, i, i + 3))
+            combine_data.splice(i..=i + 3, set_rgba(&vec_2, i, i + 3));
         }
         i += 4;
     }
@@ -74,8 +70,6 @@ fn alternate_pixels(vec_1: Vec<u8>, vec_2: Vec<u8>) -> Vec<u8> {
 }
 
 fn set_rgba(vec: &Vec<u8>, start: usize, end: usize) -> Vec<u8> {
-    println!("'println!' called at the func 'set_rgba'");
-
     let mut rgba: Vec<u8> = Vec::new();
     for i in start..=end {
         let val: u8 = match vec.get(i) {
