@@ -2,10 +2,10 @@ use crate::ImageDataErrors;
 use std::convert::TryInto;
 
 pub struct FloatingImage {
-    width: u32,
-    height: u32,
-    data: Vec<u8>,
-    name: String,
+    pub width: u32,
+    pub height: u32,
+    pub data: Vec<u8>,
+    pub name: String,
 }
 
 impl FloatingImage {
