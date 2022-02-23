@@ -5,12 +5,14 @@ pub struct FloatingImage {
     name: String,
 }
 
-pub impl FloatingImage {
+impl FloatingImage {
     pub fn new(width: u32, height: u32, name: String) -> Self {
+        let buffer_capacity: u32 = height * width * 4;
+        let buffer: Vec<u8> = Vec::with_capacity(buffer_capacity);
         FloatingImage {
             width,
             height,
-            data: vec![],
+            data: buffer,
             name,
         }
     }
