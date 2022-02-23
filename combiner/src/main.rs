@@ -6,12 +6,18 @@ use image::{DynamicImage, ImageFormat};
 use std::fs::File;
 use std::io::BufReader;
 
-fn main() {
+fn main() -> Result<()> {
     let args: Args = Args::new();
     println!("'println!' called at the func 'main'\n\targs:{:?}", args);
 
     let (image_1, image_format_1) = find_image_from_path(args.image_1);
     let (image_2, image_format_2) = find_image_from_path(args.image_2);
+
+    if image_format_1 != image_format_2 {
+        return Err();
+    }
+
+    Ok(())
 }
 
 fn find_image_from_path(path: String) -> (DynamicImage, ImageFormat) {
