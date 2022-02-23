@@ -1,2 +1,10 @@
 # rust-practice
-Some practice of Rust lang
+
+## Calculator
+```
+cd calculator
+```
+### Run
+```
+cargo run
+```
