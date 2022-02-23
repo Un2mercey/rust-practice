@@ -1,7 +1,5 @@
 use std::env::{args, Args};
 
-// cargo run -- 1 + 2
-
 fn main() {
     let mut args: Args = args();
 
