@@ -20,14 +20,14 @@ fn main() {
 
 fn operate(operator: char, first_number: f32, second_number: f32) -> f32 {
     if operator == '+' {
-        return first_number + second_number;
+        first_number + second_number
     } else if operator == '-' {
-        return first_number - second_number;
+        first_number - second_number
     } else if operator == '/' {
-        return first_number / second_number;
+        first_number / second_number
     } else if operator == '*' {
-        return first_number * second_number;
+        first_number * second_number
     } else {
-        return 0.0;
+        0.0
     }
 }
