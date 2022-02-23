@@ -4,7 +4,7 @@ mod helper_functions;
 mod image_data_errors;
 
 use crate::floating_image::FloatingImage;
-use crate::helper_functions::{find_image_from_path, standardise_size};
+use crate::helper_functions::{combine_images, find_image_from_path, standardise_size};
 use args::Args;
 use image_data_errors::ImageDataErrors;
 
@@ -19,8 +19,10 @@ fn main() -> Result<(), ImageDataErrors> {
         return Err(ImageDataErrors::DifferentImageFormats);
     }
 
-    let (image_1, _image_2) = standardise_size(image_1, image_2);
-    let _output = FloatingImage::new(image_1.width(), image_1.height(), args.output);
+    let (image_1, image_2) = standardise_size(image_1, image_2);
+    let mut output = FloatingImage::new(image_1.width(), image_1.height(), args.output);
+    let combined_data = combine_images(image_1, image_2);
+    output.set_data(combined_data);
 
     Ok(())
 }

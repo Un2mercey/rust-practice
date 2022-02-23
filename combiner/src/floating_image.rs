@@ -1,3 +1,4 @@
+use crate::ImageDataErrors;
 use std::convert::TryInto;
 
 pub struct FloatingImage {
@@ -17,5 +18,12 @@ impl FloatingImage {
             data: buffer,
             name,
         }
+    }
+    pub fn set_data(&mut self, data: Vec<u8>) -> Result<(), ImageDataErrors> {
+        if data.len() > self.data.capacity() {
+            return Err(ImageDataErrors::BufferToSmall);
+        }
+        self.data = data;
+        Ok(())
     }
 }
