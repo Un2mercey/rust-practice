@@ -3,6 +3,7 @@ mod floating_image;
 mod helper_functions;
 mod image_data_errors;
 
+use crate::floating_image::FloatingImage;
 use crate::helper_functions::{find_image_from_path, standardise_size};
 use args::Args;
 use image_data_errors::ImageDataErrors;
@@ -19,6 +20,7 @@ fn main() -> Result<(), ImageDataErrors> {
     }
 
     let (image_1, image_2) = standardise_size(image_1, image_2);
+    let output = FloatingImage::new(image_1.width(), image_1.height(), args.output);
 
     Ok(())
 }
